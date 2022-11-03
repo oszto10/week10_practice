@@ -1,12 +1,12 @@
-document.querySelector("#add-category");
-form.addEventlistener("submit", function (event) {
+const form = document.querySelector("#add-category");
+form.addEventListener("submit", function (event) {
   event.preventDefault();
   const product = {
     name: document.querySelector("#name").value,
     category: document.querySelector("#category").value,
     price: parseInt(document.querySelector("#price").value),
   };
-  fetch("/product", {
+  fetch("/upload", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
