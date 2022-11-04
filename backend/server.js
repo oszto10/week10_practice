@@ -1,4 +1,5 @@
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const app = express();
 const port = 3000;
 
@@ -7,6 +8,7 @@ const path = require("path");
 const fs = require("fs");
 
 app.use(express.json());
+app.use(fileUpload());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/index.html`));

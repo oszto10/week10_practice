@@ -6,6 +6,9 @@ form.addEventListener("submit", function (event) {
     category: document.querySelector("#category").value,
     price: parseInt(document.querySelector("#price").value),
   };
+
+  const formData = new formData();
+  formData.append("file", document.querySelector("#file").files[0]);
   fetch("/upload", {
     method: "POST",
     headers: {
