@@ -32,6 +32,24 @@ app.post("/upload", (request, response) => {
   );
 });
 
+app.post("/upload-image", (request, response) => {
+  if (!request.files) {
+    return response.status(400).send("No files were uploaded");
+  }
+  const picture = request.files.file;
+  const picName = request.body.fileName;
+  console.log(picName);
+
+  picture.mv(`${__dirname}/data/${picName}.jpg`, (error) => {
+    if (error) {
+      console.log(error);
+      return response.status(500).send(error);
+    } else {
+      return response.status(200).send("Image ok!");
+    }
+  });
+});
+
 /*app.get("/style.css", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/style.css`));
 });
